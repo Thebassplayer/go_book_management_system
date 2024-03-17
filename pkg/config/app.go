@@ -1,8 +1,8 @@
 package config
 
 import (
-	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/postgres"
+	"gorm.io/driver/sqlite"
+	"gorm.io/gorm"
 )
 
 var (
@@ -10,7 +10,7 @@ var (
 )
 
 func Connect() {
-	d, err := gorm.Open("host=aws-0-us-west-1.pooler.supabase.com user=postgres.pnpblrbqmwlqwjqqkofu password=C^wSCUL3e$KJcpsGk71fMxzb port=5432 dbname=postgres")
+	d, err := gorm.Open(sqlite.Open("books.db"), &gorm.Config{})
 	if err != nil {
 		panic(err)
 	}
