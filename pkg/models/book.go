@@ -1,6 +1,8 @@
 package models
 
 import (
+	"fmt"
+
 	"github.com/Thebassplayer/go_book_management_system/pkg/config"
 	"gorm.io/gorm"
 )
@@ -57,6 +59,8 @@ func UpdateBook(id int64, updatedBook *Book) (*Book, *gorm.DB) {
 		Author:      updatedBook.Author,
 		Publication: updatedBook.Publication,
 	})
+
+	fmt.Println("book: ", book)
 
 	return &book, db
 }
